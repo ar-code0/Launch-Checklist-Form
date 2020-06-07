@@ -23,7 +23,7 @@ window.addEventListener("load", () => {
 
    // The Functions -------------------------------------------------------------------
       //This function resets the launchStatusCheck div.--------------------------------
-      function retrieveDefault(){
+      retrieveDefault = () => {
          launchStatusCheckDiv.innerHTML = 
          `<h2 id="launchStatus">Awaiting Information Before Launch</h2>
          <div  id="faultyItems">
@@ -38,14 +38,14 @@ window.addEventListener("load", () => {
          faultyItems.setAttribute("style", "visibility: hidden;");
       }
       //This function returns an alert if not ALL the fields are filled out.---------
-      function fieldsVerify(){
+      fieldsVerify = () =>{
          alert("ALL fields are required");
          event.preventDefault();
       }
       
       /*This function checks all input and accordingly updates, everything within the 
          launchStatusCheck div-----------------------------------------------------*/
-      function statusUpdate(){
+      statusUpdate = () => {
          pilotStatus.innerHTML = `Pilot ${pilotNameInput} is ready for launch`;
          copilotStatus.innerHTML = `Co-pilot ${copilotNameInput} is ready for launch`;
          if(fuelLevelInput > 10000 && cargoMassInput < 10000){
@@ -101,47 +101,39 @@ window.addEventListener("load", () => {
       // 1.2 : Updating Shuttle Status ----------------------------------------
       else{
          statusUpdate();
-         //document.getElementById("form").reset()
-         }
-      
+         document.getElementById("form").reset()
 //-------------------------------------------------------------------------------------------------------------
 
    // PART (2) : Fetching Planetary Data---------------------------------------
 
-      fetch("https://handlers.education.launchcode.org/static/planets.json").then((response) => {
-         response.json().then((json) =>{
-            /*missionTarget.innerHTML = 
-            `<h2>Mission Destination</h2>
-            <ol>
-               <li>Name: ${json[0]["name"]}</li>
-               <li>Diameter: ${json[0]["diameter"]}</li>
-               <li>Star: ${json[0]["star"]}</li>
-               <li>Distance from Earth: ${json[0]["distance"]}</li>
-               <li>Number of Moons: ${json[0]["moons"]}</li>
-            </ol>
-            <img src="${json[0]["image"]}">`*/
-   // Bonus Mission ----------------------------------------------------------
-         let index = Math.floor((json.length*Math.random()));
-         missionTarget.innerHTML = 
-            `<h2>Mission Destination</h2>
-            <ol>
-               <li>Name: ${json[index]["name"]}</li>
-               <li>Diameter: ${json[index]["diameter"]}</li>
-               <li>Star: ${json[index]["star"]}</li>
-               <li>Distance from Earth: ${json[index]["distance"]}</li>
-               <li>Number of Moons: ${json[index]["moons"]}</li>
-            </ol>
-            <img src="${json[index]["image"]}">`
+         fetch("https://handlers.education.launchcode.org/static/planets.json").then((response) => {
+            response.json().then((json) =>{
+               /*missionTarget.innerHTML = 
+               `<h2>Mission Destination</h2>
+               <ol>
+                  <li>Name: ${json[0]["name"]}</li>
+                  <li>Diameter: ${json[0]["diameter"]}</li>
+                  <li>Star: ${json[0]["star"]}</li>
+                  <li>Distance from Earth: ${json[0]["distance"]}</li>
+                  <li>Number of Moons: ${json[0]["moons"]}</li>
+               </ol>
+               <img src="${json[0]["image"]}">`*/
+      // Bonus Mission ----------------------------------------------------------
+            let index = Math.floor((json.length*Math.random()));
+            missionTarget.innerHTML = 
+               `<h2>Mission Destination</h2>
+               <ol>
+                  <li>Name: ${json[index]["name"]}</li>
+                  <li>Diameter: ${json[index]["diameter"]}</li>
+                  <li>Star: ${json[index]["star"]}</li>
+                  <li>Distance from Earth: ${json[index]["distance"]}</li>
+                  <li>Number of Moons: ${json[index]["moons"]}</li>
+               </ol>
+               <img src="${json[index]["image"]}">`
+            })
          })
-      })
-
-
-
-     
-
+      }
    })
-
-
 })
 
 /* This block of code shows how to format the HTML once you fetch some planetary JSON!
