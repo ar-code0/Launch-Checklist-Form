@@ -93,8 +93,8 @@ window.addEventListener("load", () => {
       if(inputs.pilotNameInput==="" || inputs.copilotNameInput==="" || inputs.fuelLevelInput===""
       || inputs.cargoMassInput===""){
             fieldsVerify();
-            document.getElementById("form").reset();
-            retrieveDefault();
+            //document.getElementById("form").reset();
+            //retrieveDefault();
          }
       /*This block verifies that the information is valid; sends an alert and resets 
       fields form otherwise.-------------------------------------------------------*/
@@ -102,8 +102,8 @@ window.addEventListener("load", () => {
                   || !isNaN(Number(inputs.copilotNameInput)) 
                   || isNaN(Number(inputs.fuelLevelInput))
                   || isNaN(Number(inputs.cargoMassInput))){
-            document.getElementById("form").reset();
-            retrieveDefault();
+            //document.getElementById("form").reset();
+            //retrieveDefault();
             alert("Make sure to enter valid information for each field");
             event.preventDefault();
          }
