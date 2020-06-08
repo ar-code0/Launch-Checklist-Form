@@ -1,11 +1,9 @@
 // Write your JavaScript code here!
 window.addEventListener("load", () => {
-
-   //-------------------------------------------------------------------------------------------------------   
-
+   //-------------------------------------------------------------------------------------------------------
    let submitButton = document.getElementById("formSubmit");
    submitButton.addEventListener("click", (event) => {
-   
+     
       // The Variables -----------------------------------------------------------------     
       let inputs = {
          pilotNameInput: document.querySelector("input[name=pilotName]").value,
@@ -26,27 +24,11 @@ window.addEventListener("load", () => {
       };
 
    // The Functions -------------------------------------------------------------------
-      //This function resets the launchStatusCheck div.--------------------------------
-      retrieveDefault = () => {
-         htmlElements.launchStatusCheckDiv.innerHTML = 
-         `<h2 id="launchStatus">Awaiting Information Before Launch</h2>
-         <div  id="faultyItems">
-               <ol>
-                  <li id="pilotStatus">Pilot Ready</li>
-                  <li id="copilotStatus">Co-pilot Ready</li>
-                  <li id="fuelStatus">Fuel level high enough for launch</li>
-                  <li id="cargoStatus">Cargo mass low enough for launch</li>
-               </ol>
-         </div>`;
-         htmlElements.launchStatusCheckDiv.setAttribute("style", "background-color:none;");
-         htmlElements.faultyItems.setAttribute("style", "visibility: hidden;");
-      }
       //This function returns an alert if not ALL the fields are filled out.---------
       fieldsVerify = () => {
          alert("ALL fields are required");
          event.preventDefault();
       }
-      
       /*This function checks all input and accordingly updates, everything within the 
          launchStatusCheck div-----------------------------------------------------*/
          statusReady = () => {
@@ -140,6 +122,5 @@ window.addEventListener("load", () => {
             <img src="${json[index]["image"]}">`;
          })
       })
-
    })
 })
