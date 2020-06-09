@@ -35,7 +35,7 @@ window.addEventListener("load", () => {
             if(inputs.fuelLevelInput > 10000 && inputs.cargoMassInput < 10000){
                htmlElements.launchStatus.innerHTML = "Shuttle is ready for launch";
                htmlElements.launchStatus.setAttribute("style", "color:green;");
-               htmlElements.faultyItems.setAttribute("style", "visibility: hidden;");
+               htmlElements.faultyItems.setAttribute("style", "visibility: visible;");
             }   
          }
    
