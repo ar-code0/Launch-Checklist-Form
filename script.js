@@ -1,10 +1,42 @@
 // Write your JavaScript code here!
 window.addEventListener("load", () => {
-   //-------------------------------------------------------------------------------------------------------
+   
+// PART (2) : Fetching Planetary Data----------------------------------------------
+
+   fetch("https://handlers.education.launchcode.org/static/planets.json").then((response) => {
+      response.json().then((json) => {
+         /*missionTarget.innerHTML = 
+         `<h2>Mission Destination</h2>
+         <ol>
+            <li>Name: ${json[0]["name"]}</li>
+            <li>Diameter: ${json[0]["diameter"]}</li>
+            <li>Star: ${json[0]["star"]}</li>
+            <li>Distance from Earth: ${json[0]["distance"]}</li>
+            <li>Number of Moons: ${json[0]["moons"]}</li>
+         </ol>
+         <img src="${json[0]["image"]}">`*/
+
+   // Bonus Mission -------------------------------------------------------------
+
+      let index = Math.floor((json.length*Math.random()));
+      missionTarget.innerHTML = 
+         `<h2>Mission Destination</h2>
+         <ol>
+            <li>Name: ${json[index]["name"]}</li>
+            <li>Diameter: ${json[index]["diameter"]}</li>
+            <li>Star: ${json[index]["star"]}</li>
+            <li>Distance from Earth: ${json[index]["distance"]}</li>
+            <li>Number of Moons: ${json[index]["moons"]}</li>
+         </ol>
+         <img src="${json[index]["image"]}">`;
+      })
+   })
+  
+//-------------------------------------------------------------------------------------------------------
    let submitButton = document.getElementById("formSubmit");
    submitButton.addEventListener("click", (event) => {
      
-      // The Variables -----------------------------------------------------------------     
+   // The Variables -----------------------------------------------------------------     
       let inputs = {
          pilotNameInput: document.querySelector("input[name=pilotName]").value,
          copilotNameInput: document.querySelector("input[name=copilotName]").value,
@@ -89,38 +121,5 @@ window.addEventListener("load", () => {
       else{
          statusUpdate();
       }
-
-//-------------------------------------------------------------------------------------------------------------
-
-// PART (2) : Fetching Planetary Data----------------------------------------------
-
-      fetch("https://handlers.education.launchcode.org/static/planets.json").then((response) => {
-         response.json().then((json) => {
-            /*missionTarget.innerHTML = 
-            `<h2>Mission Destination</h2>
-            <ol>
-               <li>Name: ${json[0]["name"]}</li>
-               <li>Diameter: ${json[0]["diameter"]}</li>
-               <li>Star: ${json[0]["star"]}</li>
-               <li>Distance from Earth: ${json[0]["distance"]}</li>
-               <li>Number of Moons: ${json[0]["moons"]}</li>
-            </ol>
-            <img src="${json[0]["image"]}">`*/
-
-      // Bonus Mission -------------------------------------------------------------
-
-         let index = Math.floor((json.length*Math.random()));
-         missionTarget.innerHTML = 
-            `<h2>Mission Destination</h2>
-            <ol>
-               <li>Name: ${json[index]["name"]}</li>
-               <li>Diameter: ${json[index]["diameter"]}</li>
-               <li>Star: ${json[index]["star"]}</li>
-               <li>Distance from Earth: ${json[index]["distance"]}</li>
-               <li>Number of Moons: ${json[index]["moons"]}</li>
-            </ol>
-            <img src="${json[index]["image"]}">`;
-         })
-      })
    })
 })
